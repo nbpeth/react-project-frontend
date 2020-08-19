@@ -31,8 +31,9 @@ class TasksContainer extends Component {
   filterMyTasks = (tasks) => {
     return tasks
       .filter(
-        (task) =>
-          task.attributes.user.id === parseInt(this.props.currentUser.id)
+        (task) => {
+         return task.attributes.user.id === parseInt(this.props.currentUser.id)
+        }
       )
       .filter((task) => task.attributes.completed === false);
   };

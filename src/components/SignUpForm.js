@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 
 class SignUpForm extends Component {
 
+  // this isn't typescript, but if you used it interfaces could be leveraged to assert types and save some boiler plate
   state = {
     name: "",
     email: "",
@@ -34,16 +35,20 @@ class SignUpForm extends Component {
     this.props.signUp(this.state)
   }
 
+  // add a form validation container that displays errors OR decorates each input with an error message
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Label>Sign Up:</Form.Label>
         <Form.Group >
           <Form.Label>Name:</Form.Label>
+            {/*name is a unique constraint, but shouldn't be - email addresses are unique but what happens if you have two people named "teddy". Then, of course, your user displays need to handle ways to delineate between multiple teddy's*/}
           <Form.Control placeholder="name" value={this.state.name} name="name" type="text" onChange={this.handleChange} />
         </Form.Group>
         <Form.Group >
           <Form.Label>Email:</Form.Label>
+            {/*this says email but there is no validation on the email, at least having a reasonable regex pattern*/}
           <Form.Control placeholder="email" value={this.state.email} name="email" type="text" onChange={this.handleChange} />
         </Form.Group>
         <Form.Group>

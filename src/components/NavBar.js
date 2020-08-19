@@ -10,6 +10,7 @@ const NavBar = (props) => {
     <div className="NavBar">
       <>
         {props.loggedIn ? (
+            // you can make a local navbar component and extract a lot of this out that encapsulates the display logic based on logged in state
           <Navbar bg="light">
             <Navbar.Brand>
               {" "}

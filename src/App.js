@@ -17,7 +17,8 @@ class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser()
     this.props.fetchDepartments()
-    this.props.fetchComments()
+    this.props.fetchComments() // these are Promises, so you can handle the errors here and direct the messages accordingly.
+    // however
   }
 
   render() {

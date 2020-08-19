@@ -9,12 +9,13 @@ export const fetchComments = () => {
       .then(resp => resp.json())
       .then(response => {
         if (response.error) {
-          alert(response.error)
+          alert(response.error) // alert should never be used, there should be a container that you can pipe error messages to and then suspend any other states and recover
+          // if response.error then you can reject this promise and throw it into an error state and recover from the caller
         } else {
           dispatch(setComments(response.data))
         }
       })
-      .catch(alert)
+      .catch(alert) // no alerts, have the subscriber of this promise handle errors
   }
 }
 
@@ -43,7 +44,7 @@ export const postComment = comment => {
           dispatch(addComment(response))
         }
       })
-      .catch(alert)
+      .catch(alert) // same as above
   }
 }
 
