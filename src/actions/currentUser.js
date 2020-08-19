@@ -13,6 +13,9 @@ export const clearCurrentUser = () => {
   }
 }
 
+// paths are hard coded, routes should be agnostic of environment e.g. the root path should be injected into the app as a variable
+// ultimately, this should end up on node's process.ENV dictionary as an environment variable, maybe "const backendPath=process.ENV.BACKEND_PATH" and urls look more like `${backendPath}/api/v1/...`
+
 export const login = (credentials, history) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/login", {
@@ -54,6 +57,8 @@ export const signUp = (credentials, history) => {
     })
       .then(r => r.json())
       .then(response => {
+        // see other notes about error handling.
+        // it might also make more sense to handle the error here and useDispatch, if that's a better React way of communicating the error
         if (response.error) {
           alert(response.error)
         } else {

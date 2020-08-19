@@ -49,6 +49,7 @@ class EditTask extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="task-edit">
@@ -60,13 +61,16 @@ class EditTask extends Component {
           <Form.Group>
             <Form.Label>Select Due Date:</Form.Label>
             <br></br>
+            {/*line breaks should be handled with styling*/}
+
             <DatePicker
               selected={this.state.due_date}
               onChange={this.handleDateChange}
               name="due_date"
-              dateFormat="MM/dd/yyyy"
+              dateFormat="MM/dd/yyyy" // have a constants dictionary for stuff like this
             />
           </Form.Group>
+          {/*Unique forms might be suited for their own components*/}
           <Form.Group >
             <Form.Label>Who is this task assigned to:</Form.Label>
             <Form.Control
